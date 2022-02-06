@@ -149,6 +149,6 @@ server-Feb.05.22-23:47:23/
 Se ha creado un bash script que pueda ejecutar todo este proceso desde el script: ``backup.sh`` y el cual debemos ejecutar con el usuario y clave de la base de datos MySQL
 
 **Modo de uso**
- -  Obtener archivo  `backup.sh`
+ -  Obtener archivo  `[backup.sh](https://github.com/orzalaga/backup-ubuntu-lamp/blob/main/backup.sh)`
  -  Otorgar permisos `sudo chmod +x backup.sh`
  -  Ejecutar script  ``./build.sh username password`` (Usuario y clave root de MySQL)
