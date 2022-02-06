@@ -20,7 +20,7 @@ PASSWORD=$2
 ## Crear Directorio Principal
 ##
 ##
-cd
+cd /var/backups/
 directoryName="server-`date +%b.%d.%y-%H:%M:%S`"
 mkdir $directoryName
 
