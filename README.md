@@ -65,12 +65,12 @@ cp -R /etc/apache2/sites-available/ apache/sites-available/
  
 Comando para copia de carpeta ``html/``:
  ```bash 
- sudo zip -r $directoryName/www.zip /var/www/html/
+ sudo zip -r www.zip /var/www/html/
  ```
  
 Comando para copia de carpeta ``www/``:
  ```bash 
- sudo zip -r $directoryName/www.zip /var/www/
+ sudo zip -r www.zip /var/www/
  ```
 
 > Es importante que entiendas la funcionalidad de este comando para que puedas personalizar las carpetas que necesites realizar en la copia de seguridad. 
