@@ -151,4 +151,4 @@ Se ha creado un bash script que pueda ejecutar todo este proceso desde el script
 **Modo de uso**
  -  Obtener archivo  [backup.sh](https://github.com/orzalaga/backup-ubuntu-lamp/blob/main/backup.sh)
  -  Otorgar permisos `sudo chmod +x backup.sh`
- -  Ejecutar script  ``./build.sh username password`` (Usuario y clave root de MySQL)
+ -  Ejecutar script  ``./backup.sh username password`` (Usuario y clave root de MySQL)
