@@ -25,7 +25,7 @@ Crear un CRON para realizar una copia de seguridad automática en el servidor we
 - Zip 3.0
 
 ## Instalar Zip 3.0
-Este paquete es necesario para comprimir la copia de seguridad final.
+Este paquete es necesario para comprimir los archivos en modo Bash.
 ```
 sudo apt-get install -y zip
 ```
@@ -65,12 +65,12 @@ cp -R /etc/apache2/sites-available/ apache/sites-available/
  
 Comando para copia de carpeta ``html/``:
  ```bash 
- sudo tar -cvzpf www.tar.gz -C /var/www/ html
+ sudo zip -r $directoryName/www.zip /var/www/html/
  ```
  
 Comando para copia de carpeta ``www/``:
  ```bash 
- sudo tar -cvzpf www.tar.gz -C /var/ www
+ sudo zip -r $directoryName/www.zip /var/www/
  ```
 
 > Es importante que entiendas la funcionalidad de este comando para que puedas personalizar las carpetas que necesites realizar en la copia de seguridad. 
