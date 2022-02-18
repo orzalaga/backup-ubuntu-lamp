@@ -145,6 +145,18 @@ server-Feb.05.22-23:47:23/
 6 directorios, 8 files
 ```
 
+## Copia de Seguridad en FTP
+Es importante darle un manejo a nuestras copias de seguridad y la mejor opción es almacenarla en un servidor externo mediante protocolo FTP. 
+La copia la hacemos mediante `curl` y utilizamos el siguiente comando que compone de:
+1. Ubicación del archivo `(server-Feb.05.22-23:47:23.zip)`
+2. Credenciales acceso servidor FTP `(USER:PASSWD)`
+3. Servidor FTP `(host.ftp.com)`
+
+```bash
+curl --upload-file server-Feb.05.22-23:47:23.zip ftp://USER:PASSWD@host.ftp.com
+```
+Ejecutando este comando, nuestro archivo y copia de seguridad comprimida se copia en el nuevo servidor FTP.
+
 ## Archivo Bash 
 Se ha creado un bash script que pueda ejecutar todo este proceso desde el script: ``backup.sh`` y el cual debemos ejecutar con el usuario y clave de la base de datos MySQL
 
