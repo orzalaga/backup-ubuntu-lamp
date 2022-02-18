@@ -1,12 +1,13 @@
 #!/bin/bash -x
+
 ## JULIO CESAR VELASQUEZ MEJIA
 ## orzalata@pm.me
-## Uso:
+## Usage:
 ## sudo chmod +x backup.sh
 ## ./backup.sh {username} {password}
 
 
-## Inicio Script
+## 0.1 Username
 ##
 ##
 if [ $# -ne 2 ]
@@ -17,18 +18,12 @@ fi
 USERNAME=$1
 PASSWORD=$2
 
-## Crear Directorio Principal
-## Tener en cuenta que debe estar creado el direcotiro: /var/backups/
-##
-cd /var/backups/
-directoryName="server-`date +%b.%d.%y-%H:%M:%S`"
-mkdir $directoryName
-
-
-## Crear Directorio Principal
+## Notificarle al Script donde procedemos a realizar las copias de seguridad.
 ##
 ##
-cd /var/backups/tevendotucoche/
+FOLDER=/var/backups/
+cd $FOLDER
+##Creamos una carpeta con el formato de fecha y hora completo
 directoryName="server-`date +%b.%d.%y-%H:%M:%S`"
 mkdir $directoryName
 
@@ -68,14 +63,28 @@ while IFS= read -r database; do
     mysqldump --user $USERNAME --password=$PASSWORD "$database" > $directoryName/mysql/databases/$database.sql
 done
 
-
 ## Comprimir Carpeta en ZIP
 ##
 ##
-zip -r backup-$(date +%b.%d.%y-%H:%M:%S).zip $directoryName/
+backupName="backup-`date +%b.%d.%y-%H:%M:%S`"
+zip -r $backupName.zip $directoryName/
 
 
 ## Borrar directorio Creado
 ##
 ##
 rm -rf $directoryName/
+
+#Proceso copia en servidor FTP. Aqui agregamos todos los datos de acceso.
+HOST='10.10.10.10'
+USER='USER'
+PASSWD='PASSWD'
+FILE=$backupName.zip
+
+curl --upload-file $FOLDER/$FILE ftp://$USER:$PASSWD@$HOST
+
+##Borramos la copia de seguridad local para dejarla sola en el servidor remoto FTP
+##Es opcional este punto si queremos almacenar igualmente de manera local una copia de seguridad
+rm -rf $backupName.zip
+
+exit 0
